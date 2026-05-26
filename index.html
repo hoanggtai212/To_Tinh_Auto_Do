@@ -255,7 +255,7 @@
           <button id="btnYes" style="display: none;">Đồng ý</button>
             <button id="btnNo" style="display: none;">Không</button>
         </div>
-      <div id="messageBox" class="message-text hide">
+      <div id="messageBox" style="display: none;">
             <a>Tớ biết mà! Viết lời nhắn của cậu vào đây:</a>
             <textarea id="userMessage" rows="4" cols="50" placeholder="Nhập lời nhắn của bạn..."></textarea><br>
             <button id="btnSend">Gửi cậu</button>
@@ -338,6 +338,7 @@ btnYes.addEventListener("click", () => {
 });
     
         const btnSend = document.getElementById("btnSend");
+      
         btnSend.addEventListener("click", () => {
             const userMessage = document.getElementById("userMessage").value;
 
@@ -404,29 +405,6 @@ function changeMessageForNo() {
                 btn.classList.remove("shake");
             }, 500);
         }, 2000);
-          
-function changeMessageForNo() {
-
-    if (currentMessageForNo < messagesForNo.length) {
-
-        msgYes.textContent = messagesForNo[currentMessageForNo];
-
-        currentMessageForNo++;
-
-    } else {
-
-        // Ẩn phần trên
-        msgYes.style.display = "none";
-        btnYes.style.display = "none";
-        btnNo.style.display = "none";
-
-        // Hiện ô nhập
-        const messageBox = document.getElementById("messageBox");
-
-        messageBox.style.display = "block";
-        messageBox.classList.add("show");
-    }
-}
       
     </script>
 </body>
