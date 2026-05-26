@@ -333,7 +333,7 @@ btnYes.addEventListener("click", () => {
     btnYes.style.display = "none";
     btnNo.style.display = "none";
 
-    // Hiện ô nhập
+    // Hiện box nhập
     const messageBox = document.getElementById("messageBox");
 
     messageBox.style.display = "block";
@@ -351,11 +351,6 @@ btnYes.addEventListener("click", () => {
             } else {
                 alert("Vui lòng nhập lời nhắn trước khi gửi!");
             }
-        });
-
-        btnYes.addEventListener("click", () => {
-            messageBox.style.display = "block";
-            messageBox.classList.add("show");
         });
 
         const messagesForNo = [
