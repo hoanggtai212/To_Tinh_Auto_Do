@@ -285,30 +285,44 @@
             showNextMessage();
         });
 
-        function showNextMessage() {
-            if (currentMessage < messages.length) {
-                const currentElement = messages[currentMessage];
-                currentElement.style.display = "block";
-              currentElement.classList.add("show");
-                currentMessage++;
+document.body.addEventListener("click", () => {
 
-                setTimeout(() => {
-                    if (currentMessage > 0) {
-                        const prevElement = messages[currentMessage - 1];
-                        prevElement.classList.remove("show");
-                        prevElement.style.display = "none";
-                    }
-                    showNextMessage();
-                }, 3000);
-            } else {
-                msgYes.style.display = "block";
-                msgYes.classList.add("show");
-                btnYes.style.display = "inline-block";
-                btnNo.style.display = "inline-block";
-                const yesImage = document.getElementById("yesImage");
-                yesImage.style.display = "block";
-            }
-        }
+    // nếu đã mở thư rồi thì click mới chuyển tiếp
+    if (currentMessage > 0 && currentMessage <= messages.length) {
+        showNextMessage();
+    }
+
+});
+      
+        function showNextMessage() {
+
+    // Ẩn câu trước
+    messages.forEach(msg => {
+        msg.style.display = "none";
+    });
+
+    // Nếu còn tin nhắn
+    if (currentMessage < messages.length) {
+
+        const currentElement = messages[currentMessage];
+        currentElement.style.display = "block";
+        currentElement.classList.add("show");
+
+        currentMessage++;
+
+    } else {
+
+        // Hiện phần tỏ tình
+        msgYes.style.display = "block";
+        msgYes.classList.add("show");
+
+        btnYes.style.display = "inline-block";
+        btnNo.style.display = "inline-block";
+
+        const yesImage = document.getElementById("yesImage");
+        yesImage.style.display = "block";
+    }
+}
 
         btnYes.addEventListener("click", () => {
             btnYes.style.display = "none";
