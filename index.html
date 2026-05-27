@@ -288,30 +288,50 @@ button:active {
     });
 
 function showNextMessage() {
-        if (currentMessage < messages.length) {
-            const currentElement = messages[currentMessage];
-            currentElement.style.display = "block";
-            currentElement.classList.add("show");
-            currentMessage++;
+    // Ẩn tin nhắn cũ
+    messages.forEach(msg => {
+        msg.style.display = "none";
+        msg.classList.remove("show");
+    });
 
-            setTimeout(() => {
-                if (currentMessage > 0) {
-                    const prevElement = messages[currentMessage - 1];
-                    prevElement.classList.remove("show");
-                    prevElement.style.display = "none";
-                }
-                showNextMessage();
-            }, 3000);
-        } else {
-            msgYes.style.display = "block";
-            msgYes.classList.add("show");
-            btnYes.style.display = "inline-block";
-            btnNo.style.display = "inline-block";
-            const yesImage = document.getElementById("yesImage");
-            yesImage.style.display = "block";
-        }
+    // Nếu còn tin nhắn
+    if (currentMessage < messages.length) {
+        const currentElement = messages[currentMessage];
+
+        currentElement.style.display = "block";
+        currentElement.classList.add("show");
+
+        currentMessage++;
+    } 
+    else {
+        // Hiện phần đồng ý
+        msgYes.style.display = "block";
+        msgYes.classList.add("show");
+
+        btnYes.style.display = "inline-block";
+        btnNo.style.display = "inline-block";
+    }
+}
+
+        document.body.addEventListener("click", function (e) {
+
+    // Không chuyển khi bấm nút
+    if (
+        e.target.id === "btnYes" ||
+        e.target.id === "btnNo" ||
+        e.target.id === "btnSend" ||
+        e.target.id === "btn" ||
+        e.target.tagName === "TEXTAREA"
+    ) {
+        return;
     }
 
+    // Chỉ chuyển khi đang hiện tin nhắn
+    if (currentMessage > 0 && currentMessage <= messages.length) {
+        showNextMessage();
+    }
+});
+        
     btnYes.addEventListener("click", () => {
         btnYes.style.display = "none";
         btnNo.style.display = "none";
