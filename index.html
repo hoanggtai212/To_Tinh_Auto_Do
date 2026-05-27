@@ -238,6 +238,11 @@ button:active {
 .heart-gif{
     width: 120px;
 }
+
+#btnYes:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
         
 </style>
 </head>
@@ -388,6 +393,8 @@ if (
     let currentMessageForNo = 0;
 
 btnNo.addEventListener("click", () => {
+
+btnYes.disabled = true;
 
     // Hiện câu tiếp theo
 if (currentMessageForNo < messagesForNo.length) {
