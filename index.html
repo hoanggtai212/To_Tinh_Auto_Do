@@ -326,10 +326,13 @@ function showNextMessage() {
         return;
     }
 
-    // Chỉ chuyển khi đang hiện tin nhắn
-    if (currentMessage > 0 && currentMessage <= messages.length) {
-        showNextMessage();
-    }
+if (
+    currentMessage > 0 &&
+    currentMessage < messages.length &&
+    msgYes.style.display === "none"
+) {
+    showNextMessage();
+}
 });
         
     btnYes.addEventListener("click", () => {
