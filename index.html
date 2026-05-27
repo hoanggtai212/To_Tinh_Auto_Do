@@ -529,16 +529,28 @@ btnNo.addEventListener("click", () => {
 
         currentMessageForNo++;
 
-    } else {
+    } } else {
 
+    msgYes.classList.remove("show");
+
+    setTimeout(() => {
+
+        // Ẩn phần trên
+        msgYes.style.display = "none";
         btnYes.style.display = "none";
         btnNo.style.display = "none";
-        msgYes.style.display = "none";
 
+        // Hiện box nhập
         const messageBox = document.getElementById("messageBox");
+
         messageBox.style.display = "block";
-        messageBox.classList.add("show");
-    }
+
+        setTimeout(() => {
+            messageBox.classList.add("show");
+        }, 100);
+
+    }, 500);
+}
 });
         
     btnSend.addEventListener("click", () => {
