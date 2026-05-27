@@ -136,12 +136,12 @@ a {
     top: 50%;
     left: 50%;
 
-    transform: translate(-50%, 35%);
+    transform: translate(-50%, 60%);
     opacity: 0;
 
     transition:
-        opacity 2.6s ease,
-        transform 2.6s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 3s ease,
+        transform 3s cubic-bezier(0.22, 1, 0.36, 1);
 
     font-size: 20px;
     padding: 30px;
@@ -342,7 +342,7 @@ function showNextMessage() {
 
         setTimeout(() => {
             previousMessage.style.display = "none";
-        }, 1800);
+        }, 3000);
     }
 
     // Hiện message mới
@@ -373,7 +373,7 @@ function showNextMessage() {
 
             isChoosing = true;
 
-        }, 1800);
+        }, 3000);
     }
 }
 
