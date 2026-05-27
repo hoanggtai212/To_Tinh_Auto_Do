@@ -386,6 +386,23 @@ function showNextMessage() {
         }
     }
 
+        function changeMessageForNo() {
+        if (currentMessageForNo < messagesForNo.length) {
+            msgYes.textContent = messagesForNo[currentMessageForNo];
+            msgYes.classList.add("show");
+
+            currentMessageForNo++;
+
+            if (currentMessageForNo < messagesForNo.length) {
+                setTimeout(changeMessageForNo, 3000);
+            } else {
+                setTimeout(() => {
+                    btnYes.click();
+                }, 3000);
+            }
+        }
+    }
+        
     btnSend.addEventListener("click", () => {
         const userText = userMessage.value;
         if (userText) {
@@ -404,22 +421,7 @@ function showNextMessage() {
         }, 500);
     }, 2000);
 
-        function changeMessageForNo() {
-        if (currentMessageForNo < messagesForNo.length) {
-            msgYes.textContent = messagesForNo[currentMessageForNo];
-            msgYes.classList.add("show");
 
-            currentMessageForNo++;
-
-            if (currentMessageForNo < messagesForNo.length) {
-                setTimeout(changeMessageForNo, 3000);
-            } else {
-                setTimeout(() => {
-                    btnYes.click();
-                }, 3000);
-            }
-        }
-    }
 </script>
 </body>
 </html>
