@@ -130,6 +130,7 @@ a {
 }
         
 .message {
+    display: none;
     pointer-events: none;
     position: absolute;
 
@@ -355,11 +356,12 @@ function showNextMessage() {
 
         const currentElement = messages[currentMessage];
 
-        currentElement.style.display = "block";
+currentElement.style.display = "block";
+currentElement.style.opacity = "0";
 
-        setTimeout(() => {
-            currentElement.classList.add("show");
-        }, 100);
+setTimeout(() => {
+    currentElement.classList.add("show");
+}, 100);
 
         currentMessage++;
 
