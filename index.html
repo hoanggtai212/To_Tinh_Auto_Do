@@ -377,9 +377,7 @@ function showNextMessage() {
         if (currentMessageForNo < messagesForNo.length) {
             msgYes.textContent = messagesForNo[currentMessageForNo];
             msgYes.classList.add("show");
-
             currentMessageForNo++;
-
             if (currentMessageForNo < messagesForNo.length) {
                 setTimeout(changeMessageForNo, 3000);
             }
@@ -390,15 +388,25 @@ function showNextMessage() {
         if (currentMessageForNo < messagesForNo.length) {
             msgYes.textContent = messagesForNo[currentMessageForNo];
             msgYes.classList.add("show");
-
             currentMessageForNo++;
-
             if (currentMessageForNo < messagesForNo.length) {
                 setTimeout(changeMessageForNo, 3000);
             } else {
-                setTimeout(() => {
-                    btnYes.click();
-                }, 3000);
+} else {
+    setTimeout(() => {
+
+        // Ẩn YES NO
+        btnYes.style.display = "none";
+        btnNo.style.display = "none";
+        msgYes.style.display = "none";
+
+        // Hiện message box
+        const messageBox = document.getElementById("messageBox");
+        messageBox.style.display = "block";
+        messageBox.classList.add("show");
+
+    }, 3000);
+}
             }
         }
     }
