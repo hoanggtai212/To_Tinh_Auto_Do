@@ -129,6 +129,34 @@ a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.heart {
+    font-size: 80px;
+    animation: heartbeat 1s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+        
 .message {
     display: none;
     font-size: 20px;
@@ -250,13 +278,10 @@ button:active {
         <div class="message">Đầu tiên, cảm ơn em rất nhiều vì đã giành thời gian đọc lá thư này.</div>
         <div class="message">Anh có một điều muốn nói, nhưng không biết bắt đầu từ đâu.</div>
         <div class="message">Em đồng ý...</div>
+        
 <div id="msgYes" class="message-text" style="display: none;">
-    <img id="yesImage"
-    src="https://media.tenor.com/5mcQKx0w0k8AAAAM/mochi-peachcat.gif"
-    alt="cute gif">
-
-    <br><br>
-
+    <div class="heart">💗</div>
+    <br>
     Em đồng ý làm người yêu anh nhaaaa 💗
 </div>
         <div class="div-buttons">
