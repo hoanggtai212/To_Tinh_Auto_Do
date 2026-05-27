@@ -238,7 +238,7 @@ button:active {
 </style>
 </head>
 
-    <body id="playBtn" onclick="audio">
+    <body>
     <audio id="audio" src="./p1.mp3"></audio>
     <div>
         <h1 id="messageTitle">Bạn có tin nhắn quan trọng</h1>
@@ -373,43 +373,36 @@ function showNextMessage() {
         changeMessageForNo();
     });
 
-        function changeMessageForNo() {
+function changeMessageForNo() {
+
+    if (currentMessageForNo < messagesForNo.length) {
+
+        msgYes.textContent = messagesForNo[currentMessageForNo];
+        msgYes.classList.add("show");
+
+        currentMessageForNo++;
+
         if (currentMessageForNo < messagesForNo.length) {
-            msgYes.textContent = messagesForNo[currentMessageForNo];
-            msgYes.classList.add("show");
-            currentMessageForNo++;
-            if (currentMessageForNo < messagesForNo.length) {
-                setTimeout(changeMessageForNo, 3000);
-            }
+
+            setTimeout(changeMessageForNo, 3000);
+
+        } else {
+
+            setTimeout(() => {
+
+                btnYes.style.display = "none";
+                btnNo.style.display = "none";
+                msgYes.style.display = "none";
+
+                const messageBox = document.getElementById("messageBox");
+
+                messageBox.style.display = "block";
+                messageBox.classList.add("show");
+
+            }, 3000);
         }
     }
-
-        function changeMessageForNo() {
-        if (currentMessageForNo < messagesForNo.length) {
-            msgYes.textContent = messagesForNo[currentMessageForNo];
-            msgYes.classList.add("show");
-            currentMessageForNo++;
-            if (currentMessageForNo < messagesForNo.length) {
-                setTimeout(changeMessageForNo, 3000);
-            } else {
-} else {
-    setTimeout(() => {
-
-        // Ẩn YES NO
-        btnYes.style.display = "none";
-        btnNo.style.display = "none";
-        msgYes.style.display = "none";
-
-        // Hiện message box
-        const messageBox = document.getElementById("messageBox");
-        messageBox.style.display = "block";
-        messageBox.classList.add("show");
-
-    }, 3000);
 }
-            }
-        }
-    }
         
     btnSend.addEventListener("click", () => {
         const userText = userMessage.value;
