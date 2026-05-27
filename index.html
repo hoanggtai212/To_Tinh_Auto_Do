@@ -330,7 +330,7 @@ function showNextMessage() {
 
 if (
     currentMessage > 0 &&
-    currentMessage < messages.length &&
+    currentMessage <= messages.length &&
     !isChoosing
 ) {
     showNextMessage();
