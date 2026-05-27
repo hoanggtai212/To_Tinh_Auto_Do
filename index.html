@@ -332,14 +332,19 @@ let isChoosing = false;
 
 function showNextMessage() {
 
-    messages.forEach(msg => {
-        msg.classList.remove("show");
+    // Ẩn message cũ
+    if(currentMessage > 0){
+
+        const previousMessage = messages[currentMessage - 1];
+
+        previousMessage.classList.remove("show");
 
         setTimeout(() => {
-            msg.style.display = "none";
-        }, 1800); // đúng bằng thời gian animation
-    });
+            previousMessage.style.display = "none";
+        }, 1800);
+    }
 
+    // Hiện message mới
     if (currentMessage < messages.length) {
 
         const currentElement = messages[currentMessage];
