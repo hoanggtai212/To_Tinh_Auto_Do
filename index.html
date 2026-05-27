@@ -130,6 +130,7 @@ a {
 }
         
 .message {
+    pointer-events: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -333,6 +334,10 @@ function showNextMessage() {
 
     messages.forEach(msg => {
         msg.classList.remove("show");
+
+        setTimeout(() => {
+            msg.style.display = "none";
+        }, 1800); // đúng bằng thời gian animation
     });
 
     if (currentMessage < messages.length) {
@@ -350,6 +355,7 @@ function showNextMessage() {
     } else {
 
         setTimeout(() => {
+
             msgYes.style.display = "block";
 
             setTimeout(() => {
@@ -358,9 +364,10 @@ function showNextMessage() {
 
             btnYes.style.display = "inline-block";
             btnNo.style.display = "inline-block";
+
             isChoosing = true;
 
-        }, 500);
+        }, 1800);
     }
 }
 
