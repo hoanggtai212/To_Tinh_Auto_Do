@@ -269,6 +269,28 @@ button:active {
     width: 120px;
 }
 
+@keyframes noSmoothAnim {
+    0% {
+        transform: translateY(10px) scale(0.95);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    60% {
+        transform: translateY(-5px) scale(1.08);
+        opacity: 0.7;
+        filter: blur(0px);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}        
+        
+.no-anim {
+    animation: noSmoothAnim 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+        
 #btnYes:disabled{
     opacity: 0.5;
     cursor: not-allowed;
@@ -447,6 +469,10 @@ if (
 
 btnNo.addEventListener("click", () => {
 
+btnNo.classList.remove("no-anim");
+void btnNo.offsetWidth; // reset animation để chạy lại mỗi lần bấm
+btnNo.classList.add("no-anim");
+    
 btnYes.disabled = true;
 
     // Hiện câu tiếp theo
