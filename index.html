@@ -130,9 +130,13 @@ a {
 }
 
 #msgYes {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
-    transform: translate(-50%, 20%) scale(0.9);
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 999;
 }
 
 #msgYes.show {
@@ -330,7 +334,7 @@ button:active {
         <div class="message">Thế nên ...</div>
         <div class="message">Em đồng ý...</div>
         
-<div id="msgYes" class="message-text" style="display: none;">
+<div id="msgYes" class="message-text">
     <img class="heart-gif" src="./tim.gif" alt="heart gif">
     <br>
     Em đồng ý làm người yêu anh nhaaaa 💗
