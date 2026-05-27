@@ -375,22 +375,6 @@ if (
     let currentMessageForNo = 0;
 
 btnNo.addEventListener("click", () => {
-
-    // Nếu đã tới câu cuối
-    if (currentMessageForNo >= messagesForNo.length) {
-
-        btnYes.style.display = "none";
-        btnNo.style.display = "none";
-        msgYes.style.display = "none";
-
-        isChoosing = false;
-
-        // Ẩn luôn phần câu hỏi cuối
-        document.querySelector(".div-buttons").style.display = "none";
-
-        return;
-    }
-
     changeMessageForNo();
 });
 
@@ -403,12 +387,26 @@ function changeMessageForNo() {
 
         currentMessageForNo++;
 
+        // Nếu chưa hết câu
         if (currentMessageForNo < messagesForNo.length) {
 
             setTimeout(changeMessageForNo, 3000);
 
         } else {
 
+            // Hết câu thì hiện ô nhập
+            setTimeout(() => {
+
+                btnYes.style.display = "none";
+                btnNo.style.display = "none";
+                msgYes.style.display = "none";
+
+                const messageBox = document.getElementById("messageBox");
+
+                messageBox.style.display = "block";
+                messageBox.classList.add("show");
+
+            }, 3000);
         }
     }
 }
