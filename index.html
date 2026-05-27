@@ -128,6 +128,17 @@ a {
     transform: translateY(2px);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+
+#msgYes {
+    opacity: 0;
+    transform: translate(-50%, 20%) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#msgYes.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
         
 .message {
     pointer-events: none;
@@ -471,69 +482,53 @@ if (
 
 btnNo.addEventListener("click", () => {
 
-btnNo.classList.remove("no-anim");
-void btnNo.offsetWidth; // reset animation để chạy lại mỗi lần bấm
-btnNo.classList.add("no-anim");
-    
-btnYes.disabled = true;
+    btnNo.classList.remove("no-anim");
+    void btnNo.offsetWidth;
+    btnNo.classList.add("no-anim");
 
-    // Hiện câu tiếp theo
-if (currentMessageForNo < messagesForNo.length) {
+    btnYes.disabled = true;
 
-    msgYes.style.display = "block";
+    const data = [
+        ["matrungvui.gif", "Em vừa bảo gì cơ 🥹"],
+        ["matrungkhoc.gif", "Em vừa bảo không 🥺"],
+        ["suynghi.gif", "À có phải là 🤔"],
+        ["ngau.gif", "Không thể không yêu nhau đúm hông 😎"],
+        ["ngai.gif", "Úii a bt là e sẽ nhận lời yêu anh mà 🤗"]
+    ];
 
-    if(currentMessageForNo == 0){
-        msgYes.innerHTML = `
-            <img class="heart-gif" src="./matrungvui.gif" alt="gif">
-            <br>
-            Em vừa bảo gì cơ 🥹
-        `;
-    }
+    if (currentMessageForNo < data.length) {
 
-    else if(currentMessageForNo == 1){
-        msgYes.innerHTML = `
-            <img class="heart-gif" src="./matrungkhoc.gif" alt="gif">
-            <br>
-            Em vừa bảo không 🥺
-        `;
-    }
+        const [gif, text] = data[currentMessageForNo];
 
-    else if(currentMessageForNo == 2){
-        msgYes.innerHTML = `
-            <img class="heart-gif" src="./suynghi.gif" alt="gif">
-            <br>
-            À có phải là 🤔
-        `;
-    }
+        // ❗ fade out trước
+        msgYes.classList.remove("show");
 
-    else if(currentMessageForNo == 3){
-        msgYes.innerHTML = `
-            <img class="heart-gif" src="./ngau.gif" alt="gif">
-            <br>
-            Không thể không yêu nhau đúm hông 😎
-        `;
-    }
+        setTimeout(() => {
 
-    else if(currentMessageForNo == 4){
-        msgYes.innerHTML = `
-            <img class="heart-gif" src="./ngai.gif" alt="gif">
-            <br>
-            Úii a bt là e sẽ nhận lời yêu anh mà 🤗
-        `;
-    }
+            msgYes.style.display = "block";
 
-    currentMessageForNo++;
+            msgYes.innerHTML = `
+                <img class="heart-gif" src="./${gif}">
+                <br>
+                ${text}
+            `;
 
-}
-    else {
+            // ❗ fade in lại
+            setTimeout(() => {
+                msgYes.classList.add("show");
+            }, 50);
 
-        // Hết câu thì hiện ô nhập
+        }, 200);
+
+        currentMessageForNo++;
+
+    } else {
+
         btnYes.style.display = "none";
         btnNo.style.display = "none";
         msgYes.style.display = "none";
 
         const messageBox = document.getElementById("messageBox");
-
         messageBox.style.display = "block";
         messageBox.classList.add("show");
     }
