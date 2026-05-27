@@ -278,8 +278,9 @@ button:active {
     const messageTitle = document.getElementById("messageTitle");
     const messageText = document.getElementById("messageText");
 
-    let currentMessage = 0;
-
+let currentMessage = 0;
+let isChoosing = false;
+        
     btn.addEventListener("click", () => {
         messageTitle.classList.add("hide");
         messageText.classList.add("hide");
@@ -310,6 +311,7 @@ function showNextMessage() {
 
         btnYes.style.display = "inline-block";
         btnNo.style.display = "inline-block";
+        isChoosing = true;
     }
 }
 
@@ -329,7 +331,7 @@ function showNextMessage() {
 if (
     currentMessage > 0 &&
     currentMessage < messages.length &&
-    msgYes.style.display === "none"
+    !isChoosing
 ) {
     showNextMessage();
 }
@@ -372,9 +374,22 @@ if (
 
     let currentMessageForNo = 0;
 
-    btnNo.addEventListener("click", () => {
-        changeMessageForNo();
-    });
+btnNo.addEventListener("click", () => {
+
+    // Nếu đã tới câu cuối
+    if (currentMessageForNo >= messagesForNo.length) {
+
+        btnYes.style.display = "none";
+        btnNo.style.display = "none";
+        msgYes.style.display = "none";
+
+        isChoosing = false;
+
+        return;
+    }
+
+    changeMessageForNo();
+});
 
 function changeMessageForNo() {
 
@@ -391,18 +406,6 @@ function changeMessageForNo() {
 
         } else {
 
-            setTimeout(() => {
-
-                btnYes.style.display = "none";
-                btnNo.style.display = "none";
-                msgYes.style.display = "none";
-
-                const messageBox = document.getElementById("messageBox");
-
-                messageBox.style.display = "block";
-                messageBox.classList.add("show");
-
-            }, 3000);
         }
     }
 }
