@@ -189,13 +189,28 @@ a {
     background-color: #ffffff;
     text-align: center;
     margin-bottom: 30px;
-    transform: perspective(500px) rotateY(10deg);
-    transition: all 0.3s ease-in-out;
+
+    opacity: 0;
+
+    transform:
+        perspective(500px)
+        rotateY(10deg)
+        translateY(60px);
+
+    transition:
+        opacity 3s ease,
+        transform 3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .message-text.show {
+    opacity: 1;
+
     margin: 10px;
-    transform: perspective(500px) rotateY(0deg);
+
+    transform:
+        perspective(500px)
+        rotateY(0deg)
+        translateY(0);
 }
 
 #messageBox {
