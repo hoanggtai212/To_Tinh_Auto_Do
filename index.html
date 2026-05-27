@@ -128,34 +128,6 @@ a {
     transform: translateY(2px);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-
-.heart {
-    font-size: 80px;
-    animation: heartbeat 1s infinite;
-    display: inline-block;
-}
-
-@keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
-
-    25% {
-        transform: scale(1.2);
-    }
-
-    40% {
-        transform: scale(1);
-    }
-
-    60% {
-        transform: scale(1.25);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
         
 .message {
     display: none;
@@ -263,6 +235,25 @@ button:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.heart-gif{
+    width: 150px;
+    animation: pop 1s infinite;
+}
+
+@keyframes pop{
+    0%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+        
 </style>
 </head>
 
@@ -280,10 +271,11 @@ button:active {
         <div class="message">Em đồng ý...</div>
         
 <div id="msgYes" class="message-text" style="display: none;">
-    <div class="heart">💗</div>
+    <img class="heart-gif" src="./tim.gif" alt="heart gif">
     <br>
     Em đồng ý làm người yêu anh nhaaaa 💗
 </div>
+        
         <div class="div-buttons">
             <button id="btnYes" style="display: none;">Đồng ý</button>
             <button id="btnNo" style="display: none;">Không</button>
