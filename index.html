@@ -378,7 +378,7 @@ if (
     });
 
     const messagesForNo = [
-        "Em vừa bảo gì cơ 😤",
+        "Em vừa bảo gì cơ 🥺",
         "Em bảo không 😒",
         "À có phải là 🤔",
         "Không thể không yêu nhau đúm hông 😎",
@@ -390,14 +390,53 @@ if (
 btnNo.addEventListener("click", () => {
 
     // Hiện câu tiếp theo
-    if (currentMessageForNo < messagesForNo.length) {
+if (currentMessageForNo < messagesForNo.length) {
 
-        msgYes.style.display = "block";
-        msgYes.innerHTML = messagesForNo[currentMessageForNo];
+    msgYes.style.display = "block";
 
-        currentMessageForNo++;
+    if(currentMessageForNo == 0){
+        msgYes.innerHTML = `
+            <img class="heart-gif" src="./matrung.gif" alt="gif">
+            <br>
+            Em vừa bảo gì cơ 🥺
+        `;
+    }
 
-    } 
+    else if(currentMessageForNo == 1){
+        msgYes.innerHTML = `
+            <img class="heart-gif" src="./liec.gif" alt="gif">
+            <br>
+            Em bảo không 😒
+        `;
+    }
+
+    else if(currentMessageForNo == 2){
+        msgYes.innerHTML = `
+            <img class="heart-gif" src="./suynghi.gif" alt="gif">
+            <br>
+            À có phải là 🤔
+        `;
+    }
+
+    else if(currentMessageForNo == 3){
+        msgYes.innerHTML = `
+            <img class="heart-gif" src="./ngau.gif" alt="gif">
+            <br>
+            Không thể không yêu nhau đúm hông 😎
+        `;
+    }
+
+    else if(currentMessageForNo == 4){
+        msgYes.innerHTML = `
+            <img class="heart-gif" src="./happy.gif" alt="gif">
+            <br>
+            Úiii anh bt là em sẽ nhận lời yêu anh mà 🤗
+        `;
+    }
+
+    currentMessageForNo++;
+
+}
     else {
 
         // Hết câu thì hiện ô nhập
