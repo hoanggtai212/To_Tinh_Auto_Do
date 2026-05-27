@@ -400,9 +400,12 @@ if (
     currentMessage <= messages.length &&
     !isChoosing
 ) {
+    isChoosing = true;
     showNextMessage();
+    setTimeout(() => {
+        isChoosing = false;
+    }, 3200);
 }
-});
         
     btnYes.addEventListener("click", () => {
         btnYes.style.display = "none";
