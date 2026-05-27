@@ -243,61 +243,7 @@ button:active {
     opacity: 0.5;
     cursor: not-allowed;
 }
-
-/* Hiệu ứng xuất hiện mượt */
-.message {
-    display: none;
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    transition: all 0.8s ease;
-    position: relative;
-}
-
-/* Khi hiện */
-.message.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* Trái tim bay */
-.message.show::before,
-.message.show::after {
-    content: "💖";
-    position: absolute;
-    font-size: 22px;
-    animation: floatHeart 2s infinite ease-in-out;
-}
-
-.message.show::before {
-    left: -15px;
-    top: 10px;
-}
-
-.message.show::after {
-    right: -15px;
-    bottom: 10px;
-    animation-delay: 1s;
-}
-
-/* Animation tim */
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0px) scale(1);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translateY(-20px) scale(1.3);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-40px) scale(1);
-        opacity: 0;
-    }
-}
-
+        
 </style>
 </head>
 
@@ -360,45 +306,29 @@ let isChoosing = false;
     });
 
 function showNextMessage() {
-
+    // Ẩn tin nhắn cũ
     messages.forEach(msg => {
+        msg.style.display = "none";
         msg.classList.remove("show");
-
-        setTimeout(() => {
-            msg.style.display = "none";
-        }, 500);
     });
 
+    // Nếu còn tin nhắn
     if (currentMessage < messages.length) {
-
         const currentElement = messages[currentMessage];
 
-        setTimeout(() => {
-            currentElement.style.display = "block";
-
-            setTimeout(() => {
-                currentElement.classList.add("show");
-            }, 50);
-
-        }, 300);
+        currentElement.style.display = "block";
+        currentElement.classList.add("show");
 
         currentMessage++;
     } 
     else {
+        // Hiện phần đồng ý
+        msgYes.style.display = "block";
+        msgYes.classList.add("show");
 
-        setTimeout(() => {
-            msgYes.style.display = "block";
-
-            setTimeout(() => {
-                msgYes.classList.add("show");
-            }, 50);
-
-            btnYes.style.display = "inline-block";
-            btnNo.style.display = "inline-block";
-
-            isChoosing = true;
-
-        }, 500);
+        btnYes.style.display = "inline-block";
+        btnNo.style.display = "inline-block";
+        isChoosing = true;
     }
 }
 
