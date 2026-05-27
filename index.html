@@ -379,38 +379,30 @@ btnNo.addEventListener("click", () => {
     changeMessageForNo();
 });
 
-function changeMessageForNo() {
+btnNo.addEventListener("click", () => {
 
+    // Hiện câu tiếp theo
     if (currentMessageForNo < messagesForNo.length) {
 
-        msgYes.textContent = messagesForNo[currentMessageForNo];
-        msgYes.classList.add("show");
+        msgYes.style.display = "block";
+        msgYes.innerHTML = messagesForNo[currentMessageForNo];
 
         currentMessageForNo++;
 
-        // Nếu chưa hết câu
-        if (currentMessageForNo < messagesForNo.length) {
+    } 
+    else {
 
-            setTimeout(changeMessageForNo, 3000);
+        // Hết câu thì hiện ô nhập
+        btnYes.style.display = "none";
+        btnNo.style.display = "none";
+        msgYes.style.display = "none";
 
-        } else {
+        const messageBox = document.getElementById("messageBox");
 
-            // Hết câu thì hiện ô nhập
-            setTimeout(() => {
-
-                btnYes.style.display = "none";
-                btnNo.style.display = "none";
-                msgYes.style.display = "none";
-
-                const messageBox = document.getElementById("messageBox");
-
-                messageBox.style.display = "block";
-                messageBox.classList.add("show");
-
-            }, 3000);
-        }
+        messageBox.style.display = "block";
+        messageBox.classList.add("show");
     }
-}
+});
         
     btnSend.addEventListener("click", () => {
         const userText = userMessage.value;
