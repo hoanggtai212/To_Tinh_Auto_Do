@@ -130,13 +130,9 @@ a {
 }
 
 #msgYes {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
+    transform: translate(-50%, 20%) scale(0.9);
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 999;
 }
 
 #msgYes.show {
@@ -203,7 +199,7 @@ a {
     border-radius: 10px;
     background-color: #ffffff;
     text-align: center;
-    margin: 0;
+    margin-bottom: 30px;
 
     opacity: 0;
 
@@ -258,15 +254,6 @@ textarea {
     border-radius: 5px;
 }
 
-#msgYes {
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-        
 button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -343,7 +330,7 @@ button:active {
         <div class="message">Thế nên ...</div>
         <div class="message">Em đồng ý...</div>
         
-<div id="msgYes" class="message-text">
+<div id="msgYes" class="message-text" style="display: none;">
     <img class="heart-gif" src="./tim.gif" alt="heart gif">
     <br>
     Em đồng ý làm người yêu anh nhaaaa 💗
@@ -366,9 +353,7 @@ button:active {
         audio.play();
     });
 
-    const userMessage = document.getElementById("userMessage");
-    const messageBox = document.getElementById("messageBox");
-    const btn = document.getElementById("btn");
+        const btn = document.getElementById("btn");
     const btnYes = document.getElementById("btnYes");
     const btnNo = document.getElementById("btnNo");
     const msgYes = document.getElementById("msgYes");
